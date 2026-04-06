@@ -2,8 +2,10 @@
 //  ViewController.swift
 //  RewardsApp
 //
-//  Created by Dinil Fernando on 2026-04-06.
+//  Created by Daniel P on 2026-04-06.
 //
+//  Principal Author: Daniel Perusse
+//  Description: Basic login screen tentative
 
 import UIKit
 

@@ -4,11 +4,13 @@
 //
 //  Created by James Fitze on 2026-04-06.
 //
-
+//  Principal Author: James Fitze
+//  Description: Holds reward item data
 import Foundation
 
 class RewardRepository {
 
+    //For retrieving reward items
     static func getRewards() -> [Reward] {
         return [
             Reward(id: 1, name: "Free Coffee", pointsCost: 100, description: "Get a free coffee"),

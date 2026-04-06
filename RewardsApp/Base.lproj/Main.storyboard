@@ -18,12 +18,28 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="E1H-Kd-l7A"/>
+                        <segue destination="eJQ-fT-LDN" kind="relationship" relationship="rootViewController" id="c0Q-E0-9lI"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jCL-oP-mwN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1215" y="501"/>
+            <point key="canvasLocation" x="-1798" y="501"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Lfc-Mh-IU9">
+            <objects>
+                <viewController id="eJQ-fT-LDN" customClass="ViewController" customModule="RewardsApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1yg-iq-ZSP">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="a13-nS-Llq"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="iKU-bd-Ogn"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6CO-5j-tz4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-941" y="501"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">

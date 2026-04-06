@@ -4,7 +4,8 @@
 //
 //  Created by James Fitze on 2026-04-06.
 //
-
+//  Principal Author: James Fitze
+//  Description: Holds all store data
 import Foundation
 
 class StoreRepository {

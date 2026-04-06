@@ -4,8 +4,8 @@
 //
 //  Created by James Fitze on 2026-04-06.
 //
-
-// Shows a list of rewards
+//  Principal Author: James Fitze
+//  Description:  Shows a list of rewards
 
 import UIKit
 

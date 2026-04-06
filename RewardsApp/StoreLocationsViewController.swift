@@ -4,17 +4,18 @@
 //
 //  Created by Daniel Perusse on 2026-04-06.
 //
-
+//  Principal Author: Daniel Perusse
+//  Description: Shows store locations using MapKit
 import UIKit
 import MapKit
 
 class StoreLocationsViewController: UIViewController, MKMapViewDelegate {
     
+    //outlets for user interaction
     @IBOutlet weak var mapViewLocations: MKMapView!
-    
     @IBOutlet weak var btnViewStoreDetails: UIButton!
     
-    //custom annotatio to tell which store we picked by index
+    //custom annotation to tell which store we picked by index
     class MKPointAnnotationID: MKPointAnnotation {
         var index: Int!
     }
@@ -22,18 +23,22 @@ class StoreLocationsViewController: UIViewController, MKMapViewDelegate {
     //store array
     var stores: [Store] = []
     
+    //represents selected annotation
     var selectedID: Int = -1
         
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //set view nav title
         title = "Store Locations"
+        
+        //needed for annotation selection to work
         mapViewLocations.delegate = self
         
-        //disable our button until user selects a location
+        //prevent viewing details screen before selection annotation
         btnViewStoreDetails.isEnabled = false
         
-        // fetch stores
+        //get list of all stores + data
         stores = StoreRepository.getStores()
         
         //call our map functions on load
@@ -41,6 +46,7 @@ class StoreLocationsViewController: UIViewController, MKMapViewDelegate {
         setLocations()
     }
     
+    //sets default map view location
     private func setStartLocation() {
         //coordinates for city of Barrie, Ontario, Canada
         let initialLocation = CLLocationCoordinate2D(latitude: 44.382355, longitude: -79.688802)
@@ -57,9 +63,10 @@ class StoreLocationsViewController: UIViewController, MKMapViewDelegate {
             let annotation = MKPointAnnotationID()
             annotation.coordinate = CLLocationCoordinate2D(latitude: stores[i].latitude, longitude: stores[i].longitude)
             
-            //this text shows all the time
+            //shows store name on map
             annotation.title = stores[i].name
             
+            //set location index for reference
             annotation.index = i
             
             //add the pin to our map
@@ -79,13 +86,11 @@ class StoreLocationsViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
-    //this sends the user to the details page when pressed
+    //this sends the user to the details page when pressed and enabled
     @IBAction func btnViewStoreDetailsPressed(_ sender: UIButton) {
 
-        
+        //to go to details screen and send over store data for display
         let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "StoreDetailViewController") as! StoreDetailViewController
-        
-        //pass over the details of the store for display
         detailVC.store = stores[selectedID]
         
         self.navigationController?.pushViewController(detailVC, animated: true)

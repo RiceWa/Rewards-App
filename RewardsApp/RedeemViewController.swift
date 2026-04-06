@@ -4,8 +4,8 @@
 //
 //  Created by James Fitze on 2026-04-06.
 //
-
-// Shows a reward and lets you redeem it.
+//  Principal Author: James Fitze
+//  Description: Shows a reward and lets you redeem it.
 
 import UIKit
 

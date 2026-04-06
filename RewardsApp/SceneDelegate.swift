@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  RewardsApp
 //
-//  Created by Dinil Fernando on 2026-04-06.
+//  Created by James Fitze on 2026-04-06.
 //
 
 import UIKit
