@@ -20,7 +20,7 @@ extension Users {
 
     @NSManaged public var username: String?
     @NSManaged public var password: String?
-    @NSManaged public var points: Int64
+    @NSManaged public var points: Int32
 
 }
 

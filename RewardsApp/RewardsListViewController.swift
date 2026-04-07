@@ -8,6 +8,7 @@
 //  Description:  Shows a list of rewards
 
 import UIKit
+import CoreData
 
 // Rewards list screen
 class RewardsListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -15,6 +16,10 @@ class RewardsListViewController: UIViewController, UITableViewDataSource, UITabl
     // UI outlet
     @IBOutlet weak var tableView: UITableView!
 
+    @IBOutlet weak var pointsLabel: UILabel!
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     // Data source
     var rewards: [Reward] = []
 
@@ -32,6 +37,35 @@ class RewardsListViewController: UIViewController, UITableViewDataSource, UITabl
         // Hook up table
         tableView.dataSource = self
         tableView.delegate = self
+        
+        updateLabel()
+    }
+    
+    //update points when view pops up
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateLabel()
+    }
+    
+    //needed to show how many points when updated
+    func updateLabel() {
+        
+        //build our request to fetch user points
+        let request: NSFetchRequest<Users> = Users.fetchRequest()
+        request.predicate = NSPredicate(format: "username == %@", CurrentLogin.username)
+        //limit to only 1 user
+        request.fetchLimit = 1
+        
+        //show the user how many points they have
+        do {
+            let users = try context.fetch(request)
+            
+            if let user = users.first {
+                pointsLabel.text = "\(user.points) Points"
+            }
+        } catch {
+            pointsLabel.text = "N\\A Points"
+        }
     }
 
     // Row count

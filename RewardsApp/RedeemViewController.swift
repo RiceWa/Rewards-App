@@ -18,6 +18,8 @@ class RedeemViewController: UIViewController {
     
     @IBOutlet weak var rewardCostLabel: UILabel!
     
+    @IBOutlet weak var rewardPointsLabel: UILabel!
+    
     @IBOutlet weak var rewardDescriptionLabel: UILabel!
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -34,6 +36,33 @@ class RedeemViewController: UIViewController {
         //view.backgroundColor = .systemBackground
         loadReward()
     }
+    
+    //update points when view pops up
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateLabel()
+    }
+    
+    //needed to show how many points when updated
+    func updateLabel() {
+        
+        //build our request to fetch user points
+        let request: NSFetchRequest<Users> = Users.fetchRequest()
+        request.predicate = NSPredicate(format: "username == %@", CurrentLogin.username)
+        //limit to only 1 user
+        request.fetchLimit = 1
+        
+        //show the user how many points they have
+        do {
+            let users = try context.fetch(request)
+            
+            if let user = users.first {
+                rewardPointsLabel.text = "Your Points: \(user.points) Points"
+            }
+        } catch {
+            rewardPointsLabel.text = "N\\A Points"
+        }
+    }
 
     // Fill labels
     func loadReward() {
@@ -41,7 +70,7 @@ class RedeemViewController: UIViewController {
         guard let reward = reward else { return }
 
         rewardNameLabel.text = reward.name
-        rewardCostLabel.text = "\(reward.pointsCost) points"
+        rewardCostLabel.text = "Cost: \(reward.pointsCost) points"
         rewardDescriptionLabel.text = reward.description
     }
 
@@ -50,15 +79,34 @@ class RedeemViewController: UIViewController {
         // Need a reward
         guard let reward = reward else { return }
 
-        // Try to spend points
-        let success = PointsManager.redeemPoints(reward.pointsCost)
-
+        // Try to spend points DEPRECATED
+        //let success = PointsManager.redeemPoints(reward.pointsCost)
+        
         // Make message
-        let message: String
-        if success {
-            message = "You redeemed \(reward.name)."
-        } else {
-            message = "Not enough points."
+        var message = ""
+        
+        let request: NSFetchRequest<Users> = Users.fetchRequest()
+        request.predicate = NSPredicate(format: "username == %@", CurrentLogin.username)
+        request.fetchLimit = 1
+        
+        //update the users points and show the new value
+        do {
+            let user = try context.fetch(request)
+            
+            if let userToUpdate = user.first {
+                
+                if userToUpdate.points - Int32(reward.pointsCost) < 0 {
+                    message = "Not enough points."
+                } else {
+                    userToUpdate.points -= Int32(reward.pointsCost)
+                    try context.save()
+                    rewardPointsLabel.text = "Your Points: \(userToUpdate.points) Points"
+                    message = "You redeemed \(reward.name)."
+                }
+            }
+        } catch {
+            rewardPointsLabel.text = "N\\A Points"
+            message = "Error redeeming reward."
         }
 
         // Show result

@@ -28,6 +28,8 @@ class PointsViewController: UIViewController {
 
     //needed to show how many points when updated
     func updateLabel() {
+        
+        //DEPRECATED
         //pointsLabel.text = "\(PointsManager.getPoints()) Points"
         
         //build our request to fetch user points
