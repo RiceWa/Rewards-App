@@ -6,8 +6,15 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		C0C1C07A2F859EE8006DBDB7 /* Users+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1C0782F859EE8006DBDB7 /* Users+CoreDataClass.swift */; };
+		C0C1C07B2F859EE8006DBDB7 /* Users+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1C0792F859EE8006DBDB7 /* Users+CoreDataProperties.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		1950D85F2F839F00001DE02F /* RewardsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RewardsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0C1C0782F859EE8006DBDB7 /* Users+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Users+CoreDataClass.swift"; path = "RewardsApp/Users+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C0C1C0792F859EE8006DBDB7 /* Users+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Users+CoreDataProperties.swift"; path = "RewardsApp/Users+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -45,6 +52,8 @@
 		1950D8562F839F00001DE02F = {
 			isa = PBXGroup;
 			children = (
+				C0C1C0782F859EE8006DBDB7 /* Users+CoreDataClass.swift */,
+				C0C1C0792F859EE8006DBDB7 /* Users+CoreDataProperties.swift */,
 				1950D8612F839F00001DE02F /* RewardsApp */,
 				1950D8602F839F00001DE02F /* Products */,
 			);
@@ -132,6 +141,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0C1C07A2F859EE8006DBDB7 /* Users+CoreDataClass.swift in Sources */,
+				C0C1C07B2F859EE8006DBDB7 /* Users+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

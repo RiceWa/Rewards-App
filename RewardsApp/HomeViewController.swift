@@ -18,6 +18,8 @@ class HomeViewController: UIViewController {
         //view.backgroundColor = .systemBackground
     }
     
+    var currentUser: String!
+    
     //Principal Author: Daniel Perusse
     //This method lets us navigate to the View Points screen
     @IBAction func btnViewPointsPressed(_ sender: UIButton) {
