@@ -80,7 +80,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             self.navigationController?.popViewController(animated: true)
         }
         
-        //present it to user
+        //actually push it to user
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
     }
