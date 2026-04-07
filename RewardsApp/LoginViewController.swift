@@ -9,7 +9,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate {
+class LoginViewController: UIViewController, UITextFieldDelegate {
 
     //outlets for login
     @IBOutlet weak var textFieldUsername: UITextField!
@@ -21,6 +21,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        //disable login button on load
+        btnLogin.isEnabled = false
         
         //for return button functionality
         textFieldUsername.delegate = self
@@ -49,15 +52,25 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
     }
 
-    //to run our checkFields func when done editing
-    @IBAction func textFieldUsernameEditEnd(_ sender: UITextField) {
-    }
-    @IBAction func textFieldPasswordEditEnd(_ sender: UITextField) {
+    //to run our checkFields func when editing
+    @IBAction func textFieldUsernameChanged(_ sender: UITextField) {
+        checkFields()
     }
     
+    @IBAction func textFieldPasswordChanged(_ sender: UITextField) {
+        checkFields()
+    }
+
+    //let user login to main menu
     @IBAction func btnLoginPressed(_ sender: UIButton) {
+        let navigateToVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+        self.navigationController?.pushViewController(navigateToVC, animated: true)
+    }
+    
+    //let user register if no account
+    @IBAction func btnRegisterPressed(_ sender: UIButton) {
         //Needed for navigation to show screen
-        let navigateToVC = self.storyboard?.instantiateViewController(withIdentifier: "BarcodeViewController") as! BarcodeViewController
+        let navigateToVC = self.storyboard?.instantiateViewController(withIdentifier: "RegisterViewController") as! RegisterViewController
         self.navigationController?.pushViewController(navigateToVC, animated: true)
     }
 }
