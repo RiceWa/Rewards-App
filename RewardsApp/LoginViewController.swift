@@ -35,6 +35,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    //wipe out current login when this view is navigated to
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        CurrentLogin.username = ""
+    }
+    
     //changes return button functionality
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         //automatically go to next field when done typing username
@@ -82,7 +88,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     
                     //navigate to main menu and pass over the logged in user for reference
                     let navigateToVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-                    navigateToVC.currentUser = username
+                    //let other screens access the user
+                    CurrentLogin.username = username
                     self.navigationController?.pushViewController(navigateToVC, animated: true)
                     
                 } else {

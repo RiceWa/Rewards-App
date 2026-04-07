@@ -8,6 +8,7 @@
 //  Description: Shows a reward and lets you redeem it.
 
 import UIKit
+import CoreData
 
 // Redeem screen
 class RedeemViewController: UIViewController {
@@ -18,6 +19,8 @@ class RedeemViewController: UIViewController {
     @IBOutlet weak var rewardCostLabel: UILabel!
     
     @IBOutlet weak var rewardDescriptionLabel: UILabel!
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     // Current reward
     var reward: Reward?

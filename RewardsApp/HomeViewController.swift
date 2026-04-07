@@ -12,13 +12,17 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
+    //outlet for greeting user
+    @IBOutlet weak var textFieldGreeting: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //view.backgroundColor = .systemBackground
+        
+        //show the greeting
+        textFieldGreeting.text = "Hello, \(CurrentLogin.username)!"
     }
-    
-    var currentUser: String!
     
     //Principal Author: Daniel Perusse
     //This method lets us navigate to the View Points screen
