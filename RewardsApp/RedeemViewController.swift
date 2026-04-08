@@ -85,6 +85,7 @@ class RedeemViewController: UIViewController {
         // Make message
         var message = ""
         
+        //fetch the users points
         let request: NSFetchRequest<Users> = Users.fetchRequest()
         request.predicate = NSPredicate(format: "username == %@", CurrentLogin.username)
         request.fetchLimit = 1
@@ -95,9 +96,11 @@ class RedeemViewController: UIViewController {
             
             if let userToUpdate = user.first {
                 
+                //show error if not enough
                 if userToUpdate.points - Int32(reward.pointsCost) < 0 {
                     message = "Not enough points."
                 } else {
+                    //update and show change
                     userToUpdate.points -= Int32(reward.pointsCost)
                     try context.save()
                     rewardPointsLabel.text = "Your Points: \(userToUpdate.points) Points"

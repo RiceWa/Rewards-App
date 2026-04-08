@@ -37,8 +37,6 @@ class RewardsListViewController: UIViewController, UITableViewDataSource, UITabl
         // Hook up table
         tableView.dataSource = self
         tableView.delegate = self
-        
-        updateLabel()
     }
     
     //update points when view pops up
